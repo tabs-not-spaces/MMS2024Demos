@@ -241,4 +241,10 @@ ssh -L 80:$($debianIpAddr):80 $debianUser@$debianIpAddr -p 44
 #region access service running on a remote service...
 ssh -L 42069:192.168.1.1:80 $homeUser@$homeAddr -p 44
 #endregion
+#endregion 
+
+#region Clean up
+#region remove the public key from my computer
+
+#region disable password auth on the remote machine
 #endregion
