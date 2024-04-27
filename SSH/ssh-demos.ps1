@@ -234,10 +234,11 @@ invoke-command -Session $session -ScriptBlock {get-content -raw C:\stepHen.txt}
 #endregion
 
 #region Port Tunnelling
-
-# run nginx on remote machine, tunnel port 80 to local machine
+#region run nginx on remote machine, tunnel port 80 to local machine
 ssh -L 80:$($debianIpAddr):80 $debianUser@$debianIpAddr -p 44
+#endregion
 
-# access service running on a remote service...
+#region access service running on a remote service...
 ssh -L 42069:192.168.1.1:80 $homeUser@$homeAddr -p 44
+#endregion
 #endregion
