@@ -3,8 +3,7 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-trigger:
-- main
+trigger: none
 
 pool:
   vmImage: ubuntu-latest
@@ -13,7 +12,23 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'Workload Identity'
+    scriptType: 'pscore'
+    scriptLocation: 'inlineScript'
+    inlineScript: |
+      $response = az account get-access-token --resource https://graph.microsoft.com --query accessToken -o tsv
+      Write-Host "##vso[task.setvariable variable=GraphAccessToken;issecret=true]$response"
+      $authHeader = @{ Authorization = "Bearer $response" }
+      $restParams = @{
+        Method      = 'Get'
+        Uri         = 'https://graph.microsoft.com/beta/devices'
+        Headers     = $authHeader
+        ContentType = 'application/json'
+      }
+      $restCall = Invoke-RestMethod @restParams
+      Write-Output "Devices Found: $($restCall.value.count)"
+      $resp = $restCall.value | ConvertTo-Json -Depth 100
+      Write-Output $resp
+    addSpnToEnvironment: true
