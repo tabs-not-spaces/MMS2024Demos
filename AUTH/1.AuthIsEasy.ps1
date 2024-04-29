@@ -1,15 +1,18 @@
+#region add msal and set auth variables
 Add-Type -Path ".\AUTH\AuthIsEasy\bin\Debug\net8.0\Microsoft.Identity.Client.dll"
 
-$clientId = 'a8616097-26f4-4390-85e4-d0b047403688'
-$tenantId = "powers-hell.com"
-[string[]]$scopes = @("user.read")
+$clientId = ''
+$tenantId = ''
+[string[]]$scopes = @("https://graph.microsoft.com/.default")
+#endregion
 
-
+#region auth flow
 $publicClientApp = [Microsoft.Identity.Client.PublicCLientApplicationBuilder]::Create($clientId).
 WithAuthority("https://login.microsoftonline.com/$tenantId").WithDefaultRedirectUri().Build()
 
 $authenticationResult = $publicClientApp.AcquireTokenInteractive($scopes).ExecuteAsync().GetAwaiter().GetResult()
 $authenticationResult
+#endregion
 
 #region create the header, make a basic graph request
 $restParams = @{
