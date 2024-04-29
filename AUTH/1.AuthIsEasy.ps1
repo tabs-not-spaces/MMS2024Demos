@@ -1,4 +1,4 @@
-Add-Type -Path ".\AUTH\libs\Microsoft.Identity.Client.dll"
+Add-Type -Path ".\AUTH\AuthIsEasy\bin\Debug\net8.0\Microsoft.Identity.Client.dll"
 
 $clientId = 'a8616097-26f4-4390-85e4-d0b047403688'
 $tenantId = "powers-hell.com"
