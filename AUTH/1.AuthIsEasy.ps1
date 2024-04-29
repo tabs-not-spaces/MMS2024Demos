@@ -4,11 +4,23 @@ $clientId = 'a8616097-26f4-4390-85e4-d0b047403688'
 $tenantId = "powers-hell.com"
 [string[]]$scopes = @("user.read")
 
+
 $publicClientApp = [Microsoft.Identity.Client.PublicCLientApplicationBuilder]::Create($clientId).
-    WithAuthority("https://login.microsoftonline.com/$tenantId").WithDefaultRedirectUri().Build()
+WithAuthority("https://login.microsoftonline.com/$tenantId").WithDefaultRedirectUri().Build()
 
 $authenticationResult = $publicClientApp.AcquireTokenInteractive($scopes).ExecuteAsync().GetAwaiter().GetResult()
 $authenticationResult
+
+#region create the header, make a basic graph request
+$restParams = @{
+    Uri         = "https://graph.microsoft.com/beta/me"
+    Method      = 'GET'
+    Headers     = @{ Authorization = $authenticationResult.CreateAuthorizationHeader() }
+    ContentType = 'application/json'
+}
+$graphResponse = Invoke-RestMethod @restParams
+$graphResponse
+#endregion
 
 #region How do I get the auth libraries?
 # pick your dotnet version, install it, and run the following commands
