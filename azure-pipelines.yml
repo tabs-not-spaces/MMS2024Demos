@@ -6,7 +6,7 @@ pool:
 steps:
 - task: AzureCLI@2
   inputs:
-    azureSubscription: 'Workload Identity'
+    azureSubscription: 'BDAMDemo'
     scriptType: 'pscore'
     scriptLocation: 'inlineScript'
     inlineScript: |
