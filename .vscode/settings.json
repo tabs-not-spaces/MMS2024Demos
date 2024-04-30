@@ -1,6 +1,7 @@
 {
-    "azureFunctions.deploySubpath": "AUTH\\AzFunctions",
+    "azureFunctions.deploySubpath": "API",
     "azureFunctions.projectLanguage": "PowerShell",
     "azureFunctions.projectRuntime": "~4",
-    "debug.internalConsoleOptions": "neverOpen"
+    "debug.internalConsoleOptions": "neverOpen",
+    "azureFunctions.projectSubpath": "API\\AzFunctions"
 }

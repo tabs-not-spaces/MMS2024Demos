@@ -7,7 +7,7 @@ $tenantId = ''
 #endregion
 
 #region auth flow
-$publicClientApp = [Microsoft.Identity.Client.PublicCLientApplicationBuilder]::Create($clientId).
+$publicClientApp = [Microsoft.Identity.Client.PublicClientApplicationBuilder]::Create($clientId).
 WithAuthority("https://login.microsoftonline.com/$tenantId").WithDefaultRedirectUri().Build()
 
 $authenticationResult = $publicClientApp.AcquireTokenInteractive($scopes).ExecuteAsync().GetAwaiter().GetResult()
