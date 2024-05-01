@@ -1,14 +1,3 @@
-# Azure Functions profile.ps1
-#
-# This profile.ps1 will get executed every "cold start" of your Function App.
-# "cold start" occurs when:
-#
-# * A Function App starts up for the very first time
-# * A Function App starts up after being de-allocated due to inactivity
-#
-# You can define helper functions, run commands, or specify environment variables
-# NOTE: any variables defined that are not environment variables will get reset after the first execution
-
 # Authenticate with Azure PowerShell using MSI.
 # Remove this if you are not planning on using MSI or Azure PowerShell.
 if ($env:MSI_SECRET) {
@@ -29,7 +18,8 @@ class Beer {
     [double]$Rating
     [string]$Description
 
-    Beer([PSCustomObject]$beer) {
+    Beer($beer) {
+        $beer = $beer -as [PSCustomObject]
         $this.PartitionKey = 'beers'
         $this.RowKey = $beer.RowKey ?? [Guid]::NewGuid().ToString()
         $this.Name = $beer.name
@@ -40,18 +30,6 @@ class Beer {
         $this.Ibu = $beer.ibu
         $this.Rating = $beer.rating
         $this.Description = $beer.description
-    }
-    Beer([hashtable]$beer) {
-        $this.PartitionKey = 'beers'
-        $this.RowKey = $beer.RowKey ?? [Guid]::NewGuid().ToString()
-        $this.Name = $beer.Name
-        $this.Brewery = $beer.Brewery
-        $this.Country = $beer.Country
-        $this.Style = $beer.Style
-        $this.Abv = $beer.Abv
-        $this.Ibu = $beer.Ibu
-        $this.Rating = $beer.Rating
-        $this.Description = $beer.Description
     }
 
     [hashtable]ToHashtable() {
@@ -83,23 +61,36 @@ class Beer {
             Description  = $this.Description
         }
     }
+
+    [SimpleBeerDto]ToSimpleBeerDto() {
+        return [SimpleBeerDto]::new($this)
+    }
+
+    [DetailedBeerDto]ToDetailedBeerDto() {
+        return [DetailedBeerDto]::new($this)
+    }
 }
 
 class SimpleBeerDto {
+    [string]$RowKey
     [string]$Name
-    [string]$Brewery
     [string]$Country
     [string]$Style
-    [double]$Rating
-    [string]$RowKey
 
-    SimpleBeerDto([Beer]$entity) {
-        $this.Name = $entity.Name
-        $this.Brewery = $entity.Brewery
-        $this.Country = $entity.Country
-        $this.Style = $entity.Style
-        $this.Rating = $entity.Rating
-        $this.RowKey = $entity.RowKey
+    SimpleBeerDto($beer) {
+        if ($beer -is [Beer]) {
+            $this.RowKey = $beer.RowKey
+            $this.Name = $beer.Name
+            $this.Country = $beer.Country
+            $this.Style = $beer.Style
+        }
+        else {
+            $beer = $beer -as [PSCustomObject]
+            $this.RowKey = $beer.RowKey
+            $this.Name = $beer.Name
+            $this.Country = $beer.Country
+            $this.Style = $beer.Style
+        }
     }
 }
 
@@ -114,18 +105,31 @@ class DetailedBeerDto {
     [double]$Rating
     [string]$Description
 
-    DetailedBeerDto([Beer]$entity) {
-        $this.RowKey = $entity.RowKey
-        $this.Name = $entity.Name
-        $this.Brewery = $entity.Brewery
-        $this.Country = $entity.Country
-        $this.Style = $entity.Style
-        $this.Abv = $entity.Abv
-        $this.Ibu = $entity.Ibu
-        $this.Rating = $entity.Rating
-        $this.Description = $entity.Description
+    DetailedBeerDto($beer) {
+        if ($beer -is [Beer]) {
+            $this.RowKey = $beer.RowKey
+            $this.Name = $beer.Name
+            $this.Brewery = $beer.Brewery
+            $this.Country = $beer.Country
+            $this.Style = $beer.Style
+            $this.Abv = $beer.Abv
+            $this.Ibu = $beer.Ibu
+            $this.Rating = $beer.Rating
+            $this.Description = $beer.Description
+        }
+        else {
+            $beer = $beer -as [PSCustomObject]
+            $this.RowKey = $beer.RowKey
+            $this.Name = $beer.Name
+            $this.Brewery = $beer.Brewery
+            $this.Country = $beer.Country
+            $this.Style = $beer.Style
+            $this.Abv = $beer.Abv
+            $this.Ibu = $beer.Ibu
+            $this.Rating = $beer.Rating
+            $this.Description = $beer.Description
+        }
     }
-
     [PSCustomObject] ToPSObject() {
         return [PSCustomObject]@{
             RowKey      = $this.RowKey
@@ -145,11 +149,11 @@ class DetailedBeerDto {
 #region functions
 function Compare-PSObjectValues {
     param(
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory = $true)]
         [PSObject]
         $ReferenceObject,
 
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory = $true)]
         [PSObject]
         $DifferenceObject
     )
@@ -163,13 +167,113 @@ function Compare-PSObjectValues {
         $differenceValue = $DifferenceObject.$property
 
         if ($referenceValue -ne $differenceValue) {
-            Write-Output "Property '$property' has changed. Old value: '$referenceValue'. New value: '$differenceValue'."
+            Write-Host "Property '$property' has changed. Old value: '$referenceValue'. New value: '$differenceValue'."
         }
     }
 }
+
+function Get-Beer {
+    [OutputType([Beer])]
+    [OutputType([SimpleBeerDto[]])]
+    [cmdletbinding()]
+    param(
+        [Parameter(Mandatory = $true)]
+        [PipeHow.AzBobbyTables.AzDataTableContext]$Context,
+
+        [Parameter(Mandatory = $false)]
+        [string]$Filter = $null
+    )
+
+    try {
+        if ($null -eq $Filter) {
+            Write-Host "No filter supplied, returning all beers"
+            [Beer[]]$beers = Get-AzDataTableEntity -Context $Context
+            return $beers
+        }
+        Write-Host "Filtering beers with: $Filter"
+        [Beer[]]$filteredBeers = Get-AzDataTableEntity -Context $Context -Filter $Filter
+        return $filteredBeers
+    }
+    catch {
+        Write-Warning $_.Exception.Message
+        return $null
+    }
+}
+
+function New-Beer {
+    [OutputType([Beer])]
+    [cmdletbinding()]
+    param(
+        [Parameter(Mandatory = $true)]
+        [PipeHow.AzBobbyTables.AzDataTableContext]$Context,
+
+        [Parameter(Mandatory = $true)]
+        [PSCustomObject]$Beer
+    )
+
+    try {
+        [Beer]$newBeer = $Beer
+        Write-Host "Adding beer: $($newBeer.Name)"
+        Add-AzDataTableEntity -Context $Context -Entity $newBeer.ToPSObject() -CreateTableIfNotExists
+        return $newBeer
+    }
+    catch {
+        Write-Warning $_.Exception.Message
+        return $null
+    }
+}
+
+function Update-Beer {
+    [OutputType([bool])]
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory = $true)]
+        [PipeHow.AzBobbyTables.AzDataTableContext]$Context,
+
+        [Parameter(Mandatory = $true)]
+        [Beer]$ExistingBeer,
+
+        [Parameter(Mandatory = $true)]
+        [Beer]$NewBeer
+    )
+
+    try {
+        # Compare the existing beer with the new beer
+        Compare-PSObjectValues -ReferenceObject $ExistingBeer.ToPSObject() -DifferenceObject $NewBeer.ToPSObject()
+
+        # Update the beer
+        Write-Host "Updating beer with id: $($ExistingBeer.RowKey)"
+        Update-AzDataTableEntity -Context $Context -Entity $NewBeer.ToPSObject()
+
+        return $true
+    }
+    catch {
+        Write-Warning $_.Exception.Message
+        return $false
+    }
+}
+
+function Remove-Beer {
+    [OutputType([bool])]
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory = $true)]
+        [PipeHow.AzBobbyTables.AzDataTableContext]$Context,
+
+        [Parameter(Mandatory = $true)]
+        [Beer]$Beer
+    )
+
+    try {
+        Write-Host "Deleting beer with id: $RowKey"
+        Remove-AzDataTableEntity -Context $Context -Entity $Beer.ToPSObject()
+        return $true
+    }
+    catch {
+        Write-Warning $_.Exception.Message
+        return $false
+    }
+}
+
 #endregion
 
-# Uncomment the next line to enable legacy AzureRm alias in Azure PowerShell.
-# Enable-AzureRmAlias
-
-# You can also define functions or aliases that can be referenced in any of your PowerShell functions.

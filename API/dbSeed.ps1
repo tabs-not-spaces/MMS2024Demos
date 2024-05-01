@@ -7,7 +7,7 @@ $(New-AzDataTableContext -ConnectionString $env:AzureWebJobsStorage -TableName $
 #endregion
 
 #region seed the database
-$payload = Get-Content -Raw -Path ".\API\AzFunctions\Beers\beerSeed.json" | ConvertFrom-Json -Depth 20
+$payload = Get-Content -Raw -Path ".\API\beerSeed.json" | ConvertFrom-Json -Depth 20
 
 # Convert the Json Payload to a list of beer objects  / table entities and post them to the table
 [Beer[]]$beers = $payload

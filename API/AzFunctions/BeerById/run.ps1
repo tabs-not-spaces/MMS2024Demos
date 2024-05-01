@@ -5,7 +5,6 @@ param($Request, $TriggerMetadata)
 
 #region authenticate / get table context
 $tableName = 'beers'
-$pk = 'beers'
 $ctx = ($null -ne $env:MSI_SECRET) ? 
 $(New-AzDataTableContext -ManagedIdentity $env:MSI_SECRET -TableName $tableName) :
 $(New-AzDataTableContext -ConnectionString $env:AzureWebJobsStorage -TableName $tableName)
@@ -15,16 +14,19 @@ try {
 
     switch ($Request.Method) {
         'GET' {
+            # Get the beer
             $beerId = $Request.Params.id
             Write-Host "Getting beer with id: $beerId"
-            [Beer]$beer = Get-AzDataTableEntity -Context $ctx -Filter "RowKey eq '$beerId'"
-            if ($null -eq $beer) {
-                $statusCode = [HttpStatusCode]::NotFound
-                $body = @{ message = 'No beer found' }
-                break;
-            }
-            $statusCode = [HttpStatusCode]::OK
-            $body = $beer.ToPSObject()
+            [DetailedBeerDto]$beer = $(Get-Beer -Context $ctx -Filter "RowKey eq '$beerId'")
+
+            # Set the response
+            $statusCode = ($null -ne $beer) ? 
+            [HttpStatusCode]::OK : 
+            [HttpStatusCode]::NotFound
+
+            $body = ($null -ne $beer) ? 
+            $beer.ToPSObject() : 
+            @{ message = "No beer found with id: $beerId" }
         }
         'POST' {
             # Update the beer
@@ -37,22 +39,52 @@ try {
             Write-host "Updating beer with id: $($beerId)"
 
             # Get the existing beer
-            [Beer]$existingBeer = Get-AzDataTableEntity -Context $ctx -Filter "RowKey eq '$beerId'"
+            [Beer]$existingBeer = Get-Beer -Context $ctx -Filter "RowKey eq '$beerId'"
+            if ($null -eq $existingBeer) {
+                $statusCode = [HttpStatusCode]::NotFound
+                $body = @{ message = "No beer found with id: $beerId" }
+                break;
+            }
 
             # Convert the request body to a Beer object
             [Beer]$newBeer = $Request.Body
 
-            # Compare the existing beer with the new beer
-            Compare-PSObjectValues -ReferenceObject $existingBeer.ToPSObject() -DifferenceObject $newBeer.ToPSObject()
-
             # Update the beer
-            Update-AzDataTableEntity -Context $ctx -Entity $newBeer.ToPSObject()
+            $result = Update-Beer -Context $ctx -ExistingBeer $existingBeer -NewBeer $newBeer
 
-            $statusCode = [HttpStatusCode]::OK
-            $body = $newBeer.ToPSObject()
+            # Set the response
+            $statusCode = $result ? 
+            [HttpStatusCode]::OK : 
+            [HttpStatusCode]::InternalServerError
+
+            $body = $result ? 
+            @{ message = "Beer with id: $beerId updated" } : 
+            @{ message = "Failed to update beer with id: $beerId" }
         }
         'DELETE' {
-            #TODO Implement delete
+            # Delete the beer
+            $beerId = $Request.Params.id
+
+            # Get the existing beer (if not found, return 404)
+            [Beer]$existingBeer = Get-Beer -Context $ctx -Filter "RowKey eq '$beerId'"
+            if ($null -eq $existingBeer) {
+                $statusCode = [HttpStatusCode]::NotFound
+                $body = @{ message = "No beer found with id: $beerId" }
+                break;
+            }
+
+            # Delete the beer
+            $result = Remove-Beer -Context $ctx -Beer $existingBeer
+
+            # Set the response
+            $statusCode = $result ?
+            [HttpStatusCode]::OK :
+            [HttpStatusCode]::InternalServerError
+
+            $body = $result ?
+            @{ message = "Beer with id: $beerId deleted" } :
+            @{ message = "Failed to delete beer with id: $beerId" }
+
         }
     }
     

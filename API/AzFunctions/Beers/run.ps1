@@ -14,22 +14,26 @@ $(New-AzDataTableContext -ConnectionString $env:AzureWebJobsStorage -TableName $
 try {
     switch ($Request.Method) {
         'GET' {
-            $statusCode = [HttpStatusCode]::OK
             $filter = $Request.Query.Filter
             if ($null -eq $filter) {
-                write-output "No filter supplied, returning all beers"
-                $body = Get-AzDataTableEntity -Context $ctx
+                Write-Host "No filter supplied, returning all beers"
+                [SimpleBeerDto[]]$beers = Get-Beer -Context $ctx
+                
+                $statusCode = ($null -ne $beers) ? 
+                [HttpStatusCode]::OK : [HttpStatusCode]::NotFound
+
+                $body = ($null -ne $beers) ?
+                $beers : @{ message = 'No beers found' }
                 break;
             }
-            Write-Output "Filtering beers with: $filter"
-            $filteredBeers = Get-AzDataTableEntity -Context $ctx -Filter $filter
-            if ($null -eq $filteredBeers) {
-                write-output "No beers found for filter: $filter"
-                $statusCode = [HttpStatusCode]::NotFound
-                $body = @{ message = 'No beers found' }
-                break;
-            }
-            $body = $filteredBeers
+            Write-Host "Filtering beers with: $filter"
+            [SimpleBeerDto[]]$filteredBeers = Get-Beer -Context $ctx -Filter $filter
+            
+            $statusCode = ($null -ne $filteredBeers) ?
+            [HttpStatusCode]::OK : [HttpStatusCode]::NotFound
+
+            $body = ($null -ne $filteredBeers) ?
+            $filteredBeers : @{ message = 'No beers found' }
         }
         'POST' {
             if ($null -eq $Request.Body) {
@@ -37,8 +41,16 @@ try {
                 $body = @{ message = 'No beer provided' }
                 break;
             }
+
             [Beer]$newBeer = $Request.Body
-            Add-AzDataTableEntity -Context $ctx -Entity $newBeer.ToPSObject() -CreateTableIfNotExists
+            Write-Host "Adding beer: $($newBeer.Name)"
+            [DetailedBeerDto]$postedBeer = New-beer -Context -Beer $newBeer
+
+            $statusCode = ($null -ne $postedBeer) ?
+            [HttpStatusCode]::Created : [HttpStatusCode]::InternalServerError
+
+            $body = ($null -ne $postedBeer) ?
+            $postedBeer : @{ message = 'Failed to add beer' }
             $statusCode = [HttpStatusCode]::Created
             $body = @{ message = 'Beer added' }
         }

@@ -5,11 +5,9 @@
       "type": "httpTrigger",
       "direction": "in",
       "name": "Request",
-      "route": "beers/{id}",
+      "route": "seed",
       "methods": [
-        "get",
-        "post",
-        "delete"
+        "post"
       ]
     },
     {
