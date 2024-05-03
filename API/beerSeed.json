@@ -1,0 +1,692 @@
+[
+    {
+        "Name": "Cascade Kriek Ale",
+        "Brewery": "Cascade Brewing",
+        "Country": "USA",
+        "Style": "American Wild Ale",
+        "Abv": "7.2%",
+        "Ibu": 15,
+        "Rating": 4.5,
+        "Description": "A deep red, richly aromatic ale brewed with Northwest cherries and aged in wine barrels for up to 12 months."
+    },
+    {
+        "Name": "Heady Topper",
+        "Brewery": "The Alchemist",
+        "Country": "USA",
+        "Style": "Double IPA",
+        "Abv": "8.0%",
+        "Ibu": 100,
+        "Rating": 4.8,
+        "Description": "A highly sought after Double IPA, packed with fresh hop flavors and complex citrus aromas."
+    },
+    {
+        "Name": "Weihenstephaner Hefeweissbier",
+        "Brewery": "Bayerische Staatsbrauerei Weihenstephan",
+        "Country": "Germany",
+        "Style": "Hefeweizen",
+        "Abv": "5.4%",
+        "Ibu": 14,
+        "Rating": 4.4,
+        "Description": "A traditional Bavarian wheat beer with refreshing flavors of banana, clove, and vanilla."
+    },
+    {
+        "Name": "Speedway Stout",
+        "Brewery": "Alesmith Brewing Company",
+        "Country": "USA",
+        "Style": "Imperial Stout",
+        "Abv": "12.0%",
+        "Ibu": 70,
+        "Rating": 4.6,
+        "Description": "A bold stout featuring rich notes of espresso and chocolate, complemented by a smooth, creamy finish."
+    },
+    {
+        "Name": "Pliny the Elder",
+        "Brewery": "Russian River Brewing Company",
+        "Country": "USA",
+        "Style": "Imperial IPA",
+        "Abv": "8.0%",
+        "Ibu": 100,
+        "Rating": 4.7,
+        "Description": "An iconic and well-balanced double IPA with piney and resinous hop flavors dominating throughout."
+    },
+    {
+        "Name": "Saison Dupont",
+        "Brewery": "Brasserie Dupont",
+        "Country": "Belgium",
+        "Style": "Saison",
+        "Abv": "6.5%",
+        "Ibu": 30,
+        "Rating": 4.2,
+        "Description": "A classic Belgian farmhouse ale, dry and peppery with a lively hint of citrus."
+    },
+    {
+        "Name": "La Fin Du Monde",
+        "Brewery": "Unibroue",
+        "Country": "Canada",
+        "Style": "Tripel",
+        "Abv": "9.0%",
+        "Ibu": 19,
+        "Rating": 4.5,
+        "Description": "A spicy and slightly sweet ale with complex flavors of fruits and yeast."
+    },
+    {
+        "Name": "Allagash White",
+        "Brewery": "Allagash Brewing Company",
+        "Country": "USA",
+        "Style": "Belgian Witbier",
+        "Abv": "5.2%",
+        "Ibu": 13,
+        "Rating": 4.3,
+        "Description": "A refreshing wheat beer with hints of coriander and orange peel, perfect for any occasion."
+    },
+    {
+        "Name": "Old Rasputin",
+        "Brewery": "North Coast Brewing Co.",
+        "Country": "USA",
+        "Style": "Russian Imperial Stout",
+        "Abv": "9.0%",
+        "Ibu": 75,
+        "Rating": 4.4,
+        "Description": "A rich and intense stout with deep flavors of chocolate, coffee, and malt."
+    },
+    {
+        "Name": "Dogfish Head 90 Minute IPA",
+        "Brewery": "Dogfish Head Craft Brewery",
+        "Country": "USA",
+        "Style": "Imperial IPA",
+        "Abv": "9.0%",
+        "Ibu": 90,
+        "Rating": 4.5,
+        "Description": "A continuously hopped imperial IPA with a complex lace of hops and malt, citrusy and grassy."
+    },
+    {
+        "Name": "Budweiser",
+        "Brewery": "Anheuser-Busch",
+        "Country": "USA",
+        "Style": "American Lager",
+        "Abv": "5.0%",
+        "Ibu": 12,
+        "Rating": 3.2,
+        "Description": "A classic American lager known for its crisp, clean taste and golden color."
+    },
+    {
+        "Name": "Corona Extra",
+        "Brewery": "Grupo Modelo",
+        "Country": "Mexico",
+        "Style": "Pale Lager",
+        "Abv": "4.6%",
+        "Ibu": 18,
+        "Rating": 3.5,
+        "Description": "A light, refreshing beer with a smooth flavor that has become synonymous with beach culture."
+    },
+    {
+        "Name": "Heineken",
+        "Brewery": "Heineken N.V.",
+        "Country": "Netherlands",
+        "Style": "Euro Pale Lager",
+        "Abv": "5.0%",
+        "Ibu": 19,
+        "Rating": 3.5,
+        "Description": "A pale lager beer with a mild bitter taste, brewed by one of the oldest breweries in the world."
+    },
+    {
+        "Name": "Stella Artois",
+        "Brewery": "Anheuser-Busch InBev",
+        "Country": "Belgium",
+        "Style": "Euro Lager",
+        "Abv": "5.2%",
+        "Ibu": 24,
+        "Rating": 3.6,
+        "Description": "A bottom-fermented lager with a full flavor and a clean crisp finish."
+    },
+    {
+        "Name": "Pilsner Urquell",
+        "Brewery": "Plzeňský Prazdroj",
+        "Country": "Czech Republic",
+        "Style": "Czech Pilsner",
+        "Abv": "4.4%",
+        "Ibu": 40,
+        "Rating": 4.0,
+        "Description": "The original Pilsner from Czech Republic with a rich, golden color and a long-lasting white head."
+    },
+    {
+        "Name": "Asahi Super Dry",
+        "Brewery": "Asahi Breweries",
+        "Country": "Japan",
+        "Style": "Japanese Rice Lager",
+        "Abv": "5.0%",
+        "Ibu": 18,
+        "Rating": 3.7,
+        "Description": "A super dry beer that pairs well with sushi and other Japanese dishes, known for its clean and crisp taste."
+    },
+    {
+        "Name": "Sapporo Premium Beer",
+        "Brewery": "Sapporo Breweries",
+        "Country": "Japan",
+        "Style": "Japanese Lager",
+        "Abv": "4.9%",
+        "Ibu": 24,
+        "Rating": 3.6,
+        "Description": "A refreshing lager with a crisp, refined flavor and a clean finish."
+    },
+    {
+        "Name": "Tsingtao",
+        "Brewery": "Tsingtao Brewery",
+        "Country": "China",
+        "Style": "Chinese Pale Lager",
+        "Abv": "4.8%",
+        "Ibu": 23,
+        "Rating": 3.2,
+        "Description": "A well-hopped standard lager beer of China with a flavor derived from the finest yeast and barley."
+    },
+    {
+        "Name": "Modelo Especial",
+        "Brewery": "Grupo Modelo",
+        "Country": "Mexico",
+        "Style": "Mexican Pale Lager",
+        "Abv": "4.4%",
+        "Ibu": 18,
+        "Rating": 3.4,
+        "Description": "A rich, full-flavored pilsner beer with a slightly sweet, well-balanced taste."
+    },
+    {
+        "Name": "Brooklyn Lager",
+        "Brewery": "Brooklyn Brewery",
+        "Country": "USA",
+        "Style": "American Amber Lager",
+        "Abv": "5.2%",
+        "Ibu": 33,
+        "Rating": 3.9,
+        "Description": "A Vienna-style lager that is amber-gold in color with a firm malt center supported by a refreshing bitterness and floral hop aroma."
+    },
+    {
+        "Name": "Duvel",
+        "Brewery": "Duvel Moortgat Brewery",
+        "Country": "Belgium",
+        "Style": "Belgian Strong Pale Ale",
+        "Abv": "8.5%",
+        "Ibu": 32,
+        "Rating": 4.3,
+        "Description": "A highly carbonated ale known for its high alcohol content, complex flavors, and spicy, dry finish."
+    },
+    {
+        "Name": "Chimay Blue",
+        "Brewery": "Chimay Brewery",
+        "Country": "Belgium",
+        "Style": "Belgian Strong Dark Ale",
+        "Abv": "9.0%",
+        "Ibu": 35,
+        "Rating": 4.5,
+        "Description": "A dark Trappist beer with a powerful aroma and complex flavors of raisins, plums, and dark chocolate."
+    },
+    {
+        "Name": "Westmalle Tripel",
+        "Brewery": "Westmalle Abbey",
+        "Country": "Belgium",
+        "Style": "Tripel",
+        "Abv": "9.5%",
+        "Ibu": 36,
+        "Rating": 4.4,
+        "Description": "A clear, golden yellow Trappist beer that is creamy and aromatic with a fruity sweetness and hoppy bitterness."
+    },
+    {
+        "Name": "Delirium Tremens",
+        "Brewery": "Huyghe Brewery",
+        "Country": "Belgium",
+        "Style": "Belgian Strong Pale Ale",
+        "Abv": "8.5%",
+        "Ibu": 26,
+        "Rating": 4.2,
+        "Description": "Known for its pink elephant logo, this beer has a pale blonde color, fine effervescence, and a sweet, fruity aroma."
+    },
+    {
+        "Name": "Rochefort 10",
+        "Brewery": "Rochefort Brewery",
+        "Country": "Belgium",
+        "Style": "Quadrupel",
+        "Abv": "11.3%",
+        "Ibu": 27,
+        "Rating": 4.6,
+        "Description": "A dark, complex beer with rich flavors of dark fruit, chocolate, and spice, and a velvety finish."
+    },
+    {
+        "Name": "Orval",
+        "Brewery": "Orval Abbey",
+        "Country": "Belgium",
+        "Style": "Belgian Pale Ale",
+        "Abv": "6.2%",
+        "Ibu": 32,
+        "Rating": 4.2,
+        "Description": "A unique and slightly acidic beer with flavors of fruit, spice, and a hint of hop bitterness."
+    },
+    {
+        "Name": "La Chouffe",
+        "Brewery": "Brasserie d'Achouffe",
+        "Country": "Belgium",
+        "Style": "Belgian Strong Pale Ale",
+        "Abv": "8.0%",
+        "Ibu": 20,
+        "Rating": 4.2,
+        "Description": "A fruity and spicy beer with a refreshing taste, notes of coriander, and a hoppy punch."
+    },
+    {
+        "Name": "Leffe Blonde",
+        "Brewery": "Leffe Abbey",
+        "Country": "Belgium",
+        "Style": "Belgian Blonde Ale",
+        "Abv": "6.6%",
+        "Ibu": 22,
+        "Rating": 3.8,
+        "Description": "A pale abbey beer, with a full, sunny, golden color. It has a smooth and full-bodied taste and a rich creamy head."
+    },
+    {
+        "Name": "Gouden Carolus Classic",
+        "Brewery": "Het Anker Brewery",
+        "Country": "Belgium",
+        "Style": "Belgian Strong Dark Ale",
+        "Abv": "8.5%",
+        "Ibu": 22,
+        "Rating": 4.3,
+        "Description": "A rich and complex beer that blends sweet and bitter in a perfect balance, with notes of caramel and dark fruits."
+    },
+    {
+        "Name": "Cantillon Gueuze",
+        "Brewery": "Cantillon Brewery",
+        "Country": "Belgium",
+        "Style": "Gueuze",
+        "Abv": "5.0%",
+        "Ibu": 12,
+        "Rating": 4.5,
+        "Description": "A traditional Belgian lambic, blended from beers aged for several years to produce a sharp, tangy, and dry flavor."
+    },
+    {
+        "Name": "Victoria Bitter",
+        "Brewery": "Carlton & United Breweries",
+        "Country": "Australia",
+        "Style": "Australian Lager",
+        "Abv": "4.9%",
+        "Ibu": 20,
+        "Rating": 3.1,
+        "Description": "A well-known Australian lager with a full-bodied taste and a slightly bitter flavor profile, popular among beer drinkers for its strong hop character."
+    },
+    {
+        "Name": "Coopers Pale Ale",
+        "Brewery": "Coopers Brewery",
+        "Country": "Australia",
+        "Style": "Pale Ale",
+        "Abv": "4.5%",
+        "Ibu": 24,
+        "Rating": 3.7,
+        "Description": "A naturally conditioned ale that is cloudy in appearance due to the sediment that remains in the bottle, known for its fruity and floral hop aroma."
+    },
+    {
+        "Name": "Foster's Lager",
+        "Brewery": "Foster's Group",
+        "Country": "Australia",
+        "Style": "Pale Lager",
+        "Abv": "5.0%",
+        "Ibu": 12,
+        "Rating": 2.8,
+        "Description": "One of Australia's most famous exports, this beer is light in color and malt character, with a balanced hop profile and a clean, crisp finish."
+    },
+    {
+        "Name": "Tooheys New",
+        "Brewery": "Tooheys Brewery",
+        "Country": "Australia",
+        "Style": "Lager",
+        "Abv": "4.6%",
+        "Ibu": 18,
+        "Rating": 3.0,
+        "Description": "A classic Australian lager that has been around since 1931, favored for its smooth and refreshing taste."
+    },
+    {
+        "Name": "James Boag's Premium Lager",
+        "Brewery": "Boag's Brewery",
+        "Country": "Australia",
+        "Style": "Pale Lager",
+        "Abv": "5.0%",
+        "Ibu": 20,
+        "Rating": 3.5,
+        "Description": "A premium lager brewed from the pure waters of Tasmania, offering a delicate aroma of hops, subtle ester notes, and a crisp finish."
+    },
+    {
+        "Name": "Carlton Draught",
+        "Brewery": "Carlton & United Breweries",
+        "Country": "Australia",
+        "Style": "Pale Lager",
+        "Abv": "4.6%",
+        "Ibu": 12,
+        "Rating": 2.9,
+        "Description": "A staple at Australian sporting events, this beer is best known for its draught beer flavor, with a balanced bitterness and a clean, straightforward profile."
+    },
+    {
+        "Name": "Little Creatures Pale Ale",
+        "Brewery": "Little Creatures Brewing",
+        "Country": "Australia",
+        "Style": "Pale Ale",
+        "Abv": "5.2%",
+        "Ibu": 35,
+        "Rating": 4.2,
+        "Description": "A hop-driven, fruity and floral pale ale that has become a flagship of modern Australian craft beer."
+    },
+    {
+        "Name": "Stone & Wood Pacific Ale",
+        "Brewery": "Stone & Wood Brewing Co.",
+        "Country": "Australia",
+        "Style": "Australian Pale Ale",
+        "Abv": "4.4%",
+        "Ibu": 20,
+        "Rating": 4.1,
+        "Description": "Characterized by its cloudy appearance and tropical fruit aroma, this ale is brewed using Australian barley and hops."
+    },
+    {
+        "Name": "Cascade Premium Lager",
+        "Brewery": "Cascade Brewery",
+        "Country": "Australia",
+        "Style": "Lager",
+        "Abv": "5.0%",
+        "Ibu": 18,
+        "Rating": 3.5,
+        "Description": "A Tasmanian lager that is brewed with local Pride of Ringwood hops, known for its crisp and refreshing taste."
+    },
+    {
+        "Name": "Balter XPA",
+        "Brewery": "Balter Brewing Company",
+        "Country": "Australia",
+        "Style": "Extra Pale Ale",
+        "Abv": "5.0%",
+        "Ibu": 30,
+        "Rating": 4.3,
+        "Description": "Exhibits tropical and floral aromatics with a taste that is extremely approachable, making it a favorite among beer enthusiasts."
+    },
+    {
+        "Name": "Weihenstephaner Hefeweissbier",
+        "Brewery": "Bayerische Staatsbrauerei Weihenstephan",
+        "Country": "Germany",
+        "Style": "Hefeweizen",
+        "Abv": "5.4%",
+        "Ibu": 14,
+        "Rating": 4.4,
+        "Description": "A smooth and refreshing beer that boasts flavors of banana and clove, representing the essence of traditional Bavarian wheat beer brewing."
+    },
+    {
+        "Name": "Paulaner Salvator",
+        "Brewery": "Paulaner Brauerei",
+        "Country": "Germany",
+        "Style": "Doppelbock",
+        "Abv": "7.9%",
+        "Ibu": 24,
+        "Rating": 4.2,
+        "Description": "A deeply malty lager with a rich, toasted bread flavor profile and a hint of caramel sweetness."
+    },
+    {
+        "Name": "Schneider Weisse Aventinus",
+        "Brewery": "Schneider Weisse G. Schneider & Sohn",
+        "Country": "Germany",
+        "Style": "Weizenbock",
+        "Abv": "8.2%",
+        "Ibu": 16,
+        "Rating": 4.5,
+        "Description": "A robust wheat beer with notes of ripe banana, raisin, plum, and a touch of clove, delivering a complex and hearty drinking experience."
+    },
+    {
+        "Name": "Augustiner Helles",
+        "Brewery": "Augustiner-Bräu",
+        "Country": "Germany",
+        "Style": "Helles Lager",
+        "Abv": "5.2%",
+        "Ibu": 18,
+        "Rating": 4.3,
+        "Description": "A golden lager that is light and crisp with a balanced malt flavor, showcasing the simplicity and elegance of the Munich Helles style."
+    },
+    {
+        "Name": "Ayinger Celebrator",
+        "Brewery": "Brauerei Aying",
+        "Country": "Germany",
+        "Style": "Doppelbock",
+        "Abv": "6.7%",
+        "Ibu": 24,
+        "Rating": 4.7,
+        "Description": "A rich, dark brew with flavors of dark chocolate and dried fruit, finishing with a smooth malty sweetness that is both deep and satisfying."
+    },
+    {
+        "Name": "Jever Pilsener",
+        "Brewery": "Friesisches Brauhaus zu Jever",
+        "Country": "Germany",
+        "Style": "German Pilsner",
+        "Abv": "4.9%",
+        "Ibu": 38,
+        "Rating": 3.9,
+        "Description": "A classic German Pilsner known for its crisp, dry finish and a bright hoppy bite, making it incredibly refreshing and drinkable."
+    },
+    {
+        "Name": "Franziskaner Weissbier",
+        "Brewery": "Spaten-Franziskaner-Bräu",
+        "Country": "Germany",
+        "Style": "Hefeweizen",
+        "Abv": "5.0%",
+        "Ibu": 12,
+        "Rating": 4.1,
+        "Description": "An iconic wheat beer that offers a creamy, effervescent texture with flavors of banana and spice, topped with a thick, rocky head."
+    },
+    {
+        "Name": "Bitburger Premium Pils",
+        "Brewery": "Bitburger Brauerei",
+        "Country": "Germany",
+        "Style": "German Pilsner",
+        "Abv": "4.8%",
+        "Ibu": 38,
+        "Rating": 3.8,
+        "Description": "A leading beer in Germany, recognized for its crisp and clean hop bitterness balanced by a subtle malt backbone."
+    },
+    {
+        "Name": "Erdinger Weissbier",
+        "Brewery": "Erdinger Weissbräu",
+        "Country": "Germany",
+        "Style": "Hefeweizen",
+        "Abv": "5.3%",
+        "Ibu": 13,
+        "Rating": 4.0,
+        "Description": "A wheat beer brewed using traditional methods, it is full-bodied with a smooth yeast taste and aromatically fruity."
+    },
+    {
+        "Name": "Hacker-Pschorr Weisse",
+        "Brewery": "Hacker-Pschorr",
+        "Country": "Germany",
+        "Style": "Hefeweizen",
+        "Abv": "5.5%",
+        "Ibu": 14,
+        "Rating": 4.2,
+        "Description": "A traditional wheat beer from one of Munich's oldest breweries, offering a cloudy appearance with vibrant flavors of banana and a hint of clove."
+    },
+    {
+        "Name": "Köstritzer Schwarzbier",
+        "Brewery": "Köstritzer Schwarzbierbrauerei",
+        "Country": "Germany",
+        "Style": "Schwarzbier",
+        "Abv": "4.8%",
+        "Ibu": 22,
+        "Rating": 4.0,
+        "Description": "A deep and dark lager that defies its appearance with a light body and flavors of coffee and chocolate, finishing clean and easy."
+    },
+    {
+        "Name": "Weihenstephaner Vitus",
+        "Brewery": "Bayerische Staatsbrauerei Weihenstephan",
+        "Country": "Germany",
+        "Style": "Weizenbock",
+        "Abv": "7.7%",
+        "Ibu": 17,
+        "Rating": 4.6,
+        "Description": "A full-bodied yet surprisingly smooth beer, with rich fruity banana bread flavors, clove, and a touch of hop bitterness."
+    },
+    {
+        "Name": "Spaten Optimator",
+        "Brewery": "Spaten-Franziskaner-Bräu",
+        "Country": "Germany",
+        "Style": "Doppelbock",
+        "Abv": "7.6%",
+        "Ibu": 25,
+        "Rating": 4.1,
+        "Description": "A strong and malty German lager that delivers warm and sweet flavors with hints of caramel and toasted bread crust."
+    },
+    {
+        "Name": "Augustiner Edelstoff",
+        "Brewery": "Augustiner-Bräu",
+        "Country": "Germany",
+        "Style": "Munich Helles Lager",
+        "Abv": "5.6%",
+        "Ibu": 18,
+        "Rating": 4.2,
+        "Description": "An export lager that combines smooth malt flavors with a clean, herbal hop presence, culminating in a polished and refined finish."
+    },
+    {
+        "Name": "Mönchshof Schwarzbier",
+        "Brewery": "Kulmbacher Brauerei",
+        "Country": "Germany",
+        "Style": "Schwarzbier",
+        "Abv": "4.9%",
+        "Ibu": 20,
+        "Rating": 4.0,
+        "Description": "Characterized by its rich and robust flavor yet surprisingly light texture, this black beer offers a balanced taste with hints of chocolate and coffee."
+    },
+    {
+        "Name": "Tegernseer Hell",
+        "Brewery": "Herzoglich Bayerisches Brauhaus Tegernsee",
+        "Country": "Germany",
+        "Style": "Helles Lager",
+        "Abv": "4.8%",
+        "Ibu": 16,
+        "Rating": 4.3,
+        "Description": "A popular beer in Bavaria, this Helles is prized for its crisp and refreshing taste, with a subtle malt sweetness balanced by a gentle hop bitterness."
+    },
+    {
+        "Name": "Ayinger Bräu Weisse",
+        "Brewery": "Brauerei Aying",
+        "Country": "Germany",
+        "Style": "Hefeweizen",
+        "Abv": "5.1%",
+        "Ibu": 13,
+        "Rating": 4.3,
+        "Description": "Bright and refreshing, this traditional wheat beer is renowned for its frothy head and lively notes of banana and citrus."
+    },
+    {
+        "Name": "Hofbräu Original",
+        "Brewery": "Staatliches Hofbräuhaus München",
+        "Country": "Germany",
+        "Style": "Munich Helles Lager",
+        "Abv": "5.1%",
+        "Ibu": 18,
+        "Rating": 4.0,
+        "Description": "A quintessential Munich lager, well-balanced with a clean malt flavor and a refreshing finish, a true testament to Bavarian beer culture."
+    },
+    {
+        "Name": "Radeberger Pilsner",
+        "Brewery": "Radeberger Exportbierbrauerei",
+        "Country": "Germany",
+        "Style": "German Pilsner",
+        "Abv": "4.8%",
+        "Ibu": 33,
+        "Rating": 3.9,
+        "Description": "A classic German Pilsner, sharp and crisp with a dry finish that emphasizes its hoppy character, making it thoroughly refreshing."
+    },
+    {
+        "Name": "Fuller's London Pride",
+        "Brewery": "Fuller's Brewery",
+        "Country": "United Kingdom",
+        "Style": "English Pale Ale",
+        "Abv": "4.7%",
+        "Ibu": 30,
+        "Rating": 4.1,
+        "Description": "A classic English pale ale with a rich amber color, offering a smooth, well-rounded nutty flavor balanced by a subtle bitterness."
+    },
+    {
+        "Name": "Old Speckled Hen",
+        "Brewery": "Greene King",
+        "Country": "United Kingdom",
+        "Style": "English Strong Ale",
+        "Abv": "5.0%",
+        "Ibu": 30,
+        "Rating": 3.8,
+        "Description": "A popular ale with a distinctive malty taste and a fruity aroma, its name inspired by an old MG car which was a familiar sight at the brewery."
+    },
+    {
+        "Name": "Theakston Old Peculier",
+        "Brewery": "Theakston Brewery",
+        "Country": "United Kingdom",
+        "Style": "Old Ale",
+        "Abv": "5.6%",
+        "Ibu": 27,
+        "Rating": 4.2,
+        "Description": "A rich, dark ale known for its complex flavors of malt, ripe fruits, and a gentle hint of roasted malt, creating a unique and mysterious character."
+    },
+    {
+        "Name": "St. Austell Proper Job",
+        "Brewery": "St. Austell Brewery",
+        "Country": "United Kingdom",
+        "Style": "IPA - English",
+        "Abv": "5.5%",
+        "Ibu": 40,
+        "Rating": 4.3,
+        "Description": "An assertively hopped IPA with a crisp and aromatic hop character, showcasing floral and citrus notes, inspired by traditional IPAs."
+    },
+    {
+        "Name": "Samuel Smith's Nut Brown Ale",
+        "Brewery": "Samuel Smith Old Brewery",
+        "Country": "United Kingdom",
+        "Style": "Brown Ale - English",
+        "Abv": "5.0%",
+        "Ibu": 28,
+        "Rating": 4.4,
+        "Description": "A classic English brown ale with a deep amber hue, featuring rich and nutty flavors complemented by a subtle hop aroma."
+    },
+    {
+        "Name": "Harvey's Sussex Best Bitter",
+        "Brewery": "Harvey's Brewery",
+        "Country": "United Kingdom",
+        "Style": "English Bitter",
+        "Abv": "4.0%",
+        "Ibu": 26,
+        "Rating": 4.1,
+        "Description": "An award-winning bitter that balances the sweetness of Maris Otter malt with the bitterness of traditional English hops."
+    },
+    {
+        "Name": "Adnams Ghost Ship",
+        "Brewery": "Adnams Brewery",
+        "Country": "United Kingdom",
+        "Style": "Pale Ale - English",
+        "Abv": "4.5%",
+        "Ibu": 30,
+        "Rating": 4.0,
+        "Description": "Inspired by eerie tales of the Suffolk coast, this pale ale is brewed with a blend of American and English hops to create a citrusy and slightly spooky ale."
+    },
+    {
+        "Name": "Bass Pale Ale",
+        "Brewery": "Bass Brewery",
+        "Country": "United Kingdom",
+        "Style": "English Pale Ale",
+        "Abv": "5.1%",
+        "Ibu": 32,
+        "Rating": 3.7,
+        "Description": "One of the most iconic English pale ales, known for its rich history and its balanced flavor of malt and hops, providing a crisp finish."
+    },
+    {
+        "Name": "Wychwood Hobgoblin",
+        "Brewery": "Wychwood Brewery",
+        "Country": "United Kingdom",
+        "Style": "ESB (Extra Special Bitter)",
+        "Abv": "5.2%",
+        "Ibu": 35,
+        "Rating": 4.0,
+        "Description": "A full-bodied, well-rounded beer that delivers a chocolate toffee malt flavor, balanced with a moderate bitterness and an overall fruity character."
+    },
+    {
+        "Name": "Boddingtons Pub Ale",
+        "Brewery": "Boddingtons Brewery",
+        "Country": "United Kingdom",
+        "Style": "English Pale Ale",
+        "Abv": "4.7%",
+        "Ibu": 25,
+        "Rating": 3.5,
+        "Description": "Known for its creamy texture and smooth taste, this ale features a sweet malty aroma with a hoppy finish, making it a quintessential pub favorite."
+    }
+]
