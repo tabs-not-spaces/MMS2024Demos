@@ -139,7 +139,7 @@ New-NetFirewallRule @fwParams
 #endregion
 
 
-# configure ssh system-wide configuration.
+#region configure ssh system-wide configuration.
 # choose how to connect to server and open sshd config file
 notepad "$($env:programdata)\ssh\sshd_config"
 
@@ -147,10 +147,12 @@ notepad "$($env:programdata)\ssh\sshd_config"
 $newPort = 44 #LITERALLY ANYTHING OTHER THAN THE DEFAULT
 Get-NetFirewallRule -Name "OpenSSH-Server-In-TCP" | Set-NetFirewallRule -LocalPort $newPort
 Get-service sshd | Restart-Service
+#endregion
 
 #endregion
 
 #region let's use PowerShell as the default shell
+#windows
 $regParams = @{
     Path         = "HKLM:\SOFTWARE\OpenSSH"
     Name         = "DefaultShell"
@@ -159,6 +161,14 @@ $regParams = @{
     Force        = $true
 }
 New-ItemProperty @regParams
+
+#linux
+cat /etc/shells
+chsh -s /usr/bin/pwsh
+
+#mac
+cat /etc/shells
+chsh -s /usr/local/bin/pwsh
 
 # restart sshd service
 Get-service sshd | Restart-Service
