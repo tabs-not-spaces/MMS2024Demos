@@ -8,8 +8,7 @@
       "route": "beers/{id}",
       "methods": [
         "get",
-        "post",
-        "delete"
+        "post"
       ]
     },
     {
