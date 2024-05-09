@@ -85,23 +85,29 @@ function Connect-MgGraphButBetter {
         $osIdentity = [Microsoft.Identity.Client.PublicClientApplication]::OperatingSystemAccount
 
         #create the public client app
-        $publicClientApp = [Microsoft.Identity.Client.PublicClientApplicationBuilder]::Create($clientId).
-        WithAuthority([Microsoft.Identity.Client.AzureCloudInstance]::AzurePublic, $tenantId).
-        WithRedirectUri($redirectUri)
+        if ($null -eq $global:app) {
+            $publicClientApp = [Microsoft.Identity.Client.PublicClientApplicationBuilder]::Create($clientId).
+            WithAuthority([Microsoft.Identity.Client.AzureCloudInstance]::AzurePublic, $tenantId).
+            WithRedirectUri($redirectUri)
 
-        #add the broker
-        [Microsoft.Identity.Client.Broker.BrokerExtension]::WithBroker($publicClientApp, $brokerOpts) | Out-Null
+            #add the broker
+            [Microsoft.Identity.Client.Broker.BrokerExtension]::WithBroker($publicClientApp, $brokerOpts) | Out-Null
 
-        #build the pca and acquire a token
-        $global:app = $publicClientApp.Build()
+            #build the pca and acquire a token
+            $global:app = $publicClientApp.Build()
+        }
 
         #check if there is a token in cache
         $accounts = $global:app.GetAccountsAsync().GetAwaiter().GetResult()
         $existingAccount = $accounts[0]
         if ($existingAccount) {
+            Write-Host "Existing account: " -ForegroundColor Yellow -NoNewline
+            Write-Host "✅"
             $authenticationResult = $global:app.AcquireTokenSilent($scopes, $existingAccount).ExecuteAsync().GetAwaiter().GetResult()
         }
         else {
+            Write-Host "Existing account: " -ForegroundColor Yellow -NoNewline
+            Write-Host "❌"
             $authenticationResult = $app.AcquireTokenSilent($scopes, $osIdentity).ExecuteAsync().GetAwaiter().GetResult()
         }
         return $authenticationResult
@@ -126,6 +132,7 @@ function Get-MgGraphUserInfoScopedToLoggedOnUserEnhancedForBryanByRandomlyAdding
             Headers     = @{ Authorization = $Context.CreateAuthorizationHeader() }
             ContentType = 'application/json'
         }
+        Write-Host "Making a graph request to get user info" -ForegroundColor Yellow
         $graphResponse = Invoke-RestMethod @restParams
         return $graphResponse
     }
