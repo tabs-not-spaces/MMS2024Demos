@@ -1,5 +1,7 @@
 #region HEY BEN UPDATE THESE BEFORE YOU START
-$remoteIpAddr = "192.168.1.168"
+$windows = "192.168.173"
+$linux = ""
+$mac = "192.168.73.160"
 $remoteUser = "administrator"
 $homeAddr = "benreader.com"
 $homeUser = "ben"
@@ -121,7 +123,7 @@ Get-NetFirewallRule -Name "OpenSSH-Server-In-TCP" | Set-NetFirewallRule -Profile
 Get-NetFirewallRule -Name "CoreNet-Diag-ICMP4-EchoRequest-In" | Set-NetFirewallRule -Profile "any" -Enabled true
 
 #region firewall causing problems? shoot it in the face
-Set-NetFirewallProfile -Profile Domain, Public, Private -Enabled true
+Set-NetFirewallProfile -Profile Domain, Public, Private -Enabled false
 #endregion
 
 #region from scratch if needed
